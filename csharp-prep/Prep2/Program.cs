@@ -4,10 +4,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        //Pronpt for the user's percentage
-        Console.WriteLine("What is your grade percentage? ");
-         string answer = Console.ReadLine();
-        int percent = int.Parse(answer);
+        // Prompt for the user's name
+        Console.WriteLine("What is your name?");
+        string name = Console.ReadLine();
+
+        // Prompt for the subject
+        Console.WriteLine("What subject is this grade for?");
+        string subject = Console.ReadLine();
+
+        // Prompt for the user's percentage
+        Console.WriteLine($"Hi {name}, what is your grade percentage for {subject}? ");
+        string answer = Console.ReadLine();
+        int percent;
+        if (!int.TryParse(answer, out percent) || percent < 0 || percent > 100)
+        {
+            Console.WriteLine("Please enter a valid percentage between 0 and 100.");
+            return; // Exit the program if the input is invalid
+        }
 
         string remark = "";
 
@@ -36,7 +49,7 @@ class Program
         
         if (percent >= 70)
         {
-            Console.WriteLine("You passed!");
+            Console.WriteLine("You passed! Well-done");
         }
         else
         {
