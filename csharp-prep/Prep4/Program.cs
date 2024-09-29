@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Ask for the user's name to personalize the experience
+        // Asking for the user's name 
         Console.Write("What is your name? ");
         string userName = Console.ReadLine();
 
