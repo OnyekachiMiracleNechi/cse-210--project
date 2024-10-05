@@ -8,6 +8,7 @@ public class Entry
     public string Prompt { get; }
     public string Response { get; }
 
+    //Takes the date, prompt, and user response as parameters and assigns them to the corresponding properties
     public Entry(string date, string prompt, string response)
     {
         Date = date;
@@ -15,6 +16,7 @@ public class Entry
         Response = response;
     }
 
+   //Formats the output to include the date, prompt, and response, which is useful for displaying journal entries.
     public override string ToString()
     {
         return $"{Date} | {Prompt} | {Response}";
@@ -23,6 +25,7 @@ public class Entry
 
 public class Journal
 {
+    //Generating  a list that stores all journal entries.
     private List<Entry> entries = new List<Entry>();
     private readonly string[] prompts = new string[]
     {
@@ -36,16 +39,20 @@ public class Journal
     private Random random = new Random();
 
     public string GetRandomPrompt()
-    {
+    //Utilizes the Random instance to generate a random index.
+    {    
         return prompts[random.Next(prompts.Length)];
     }
 
+   //Generates the current date and adds a new Entry object to the entries list.
     public void AddEntry(string response, string prompt)
     {
         string date = DateTime.Now.ToShortDateString();
         entries.Add(new Entry(date, prompt, response));
     }
 
+    
+    //Prints each entry's string representation to the console.
     public void DisplayEntries()
     {
         foreach (var entry in entries)
@@ -65,6 +72,7 @@ public class Journal
         }
     }
 
+    //Clears the current entries and loads them from a specified file.
     public void LoadFromFile(string filename)
     {
         entries.Clear();
@@ -90,7 +98,7 @@ public class Program
     public static void Main(string[] args)
     {
         while (true)
-        {
+        {  //generating the commands to use
             Console.WriteLine("1. Write a new entry");
             Console.WriteLine("2. Display journal");
             Console.WriteLine("3. Save journal to file");
