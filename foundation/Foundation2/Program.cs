@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+//PROMPT FOR THE ADDRESS
 class Address
 {
     private string street;
